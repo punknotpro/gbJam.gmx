@@ -25,10 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// setup
-
-image_speed = 0;
-image_index = 0;
+            <string>key = virtual_key_add(x,y,32,32,vk_tab);
 </string>
           </argument>
         </arguments>
@@ -52,7 +49,7 @@ image_index = 0;
           <argument>
             <kind>1</kind>
             <string>display_set_gui_size(256,144);
-draw_sprite(spr_adrenaline,abs( obj_charactor.adrenaline / 3.333), 0 , 0);
+draw_sprite(spr_vr_button,1,x,y);
 </string>
           </argument>
         </arguments>

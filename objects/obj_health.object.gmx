@@ -25,10 +25,39 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// setup
-
-image_speed = 0;
-image_index = 0;
+            <string>///initiate variable
+health_list[0] = 2;
+health_list[1] = 2;
+health_list[2] = 2; 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///setup health
+health_list[0] = 1;
+health_list[1] = 1;
+health_list[2] = 1;
+for(i = 0; i &lt; obj_charactor.hp ; i += 1){
+    health_list[i] = 2;
+}
 </string>
           </argument>
         </arguments>
@@ -52,7 +81,9 @@ image_index = 0;
           <argument>
             <kind>1</kind>
             <string>display_set_gui_size(256,144);
-draw_sprite(spr_adrenaline,abs( obj_charactor.adrenaline / 3.333), 0 , 0);
+draw_sprite(spr_health,health_list[0],x,y);
+draw_sprite(spr_health,health_list[1],x + 17,y);
+draw_sprite(spr_health,health_list[2],x + 34,y);
 </string>
           </argument>
         </arguments>

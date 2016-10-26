@@ -38,6 +38,32 @@ double_jumpspeed = 3;
 max_jump = 6;
 max_fallspeed = 10;
 adrenaline = 100;
+hp = 3;
+invincible = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// no more god mode
+invincible = 0;
 </string>
           </argument>
         </arguments>
@@ -108,6 +134,12 @@ if(keyboard_check_pressed(vk_lalt) &amp;&amp; adrenaline &gt;= 30){
     image_speed = image_speed * 2;
     adrenaline -= 30;
     alarm[0] = 20;
+}
+
+// attack
+if(keyboard_check_pressed(vk_tab)){
+    attack = instance_create(x,y,obj_charactor_attack);
+    attack.hspeed = 7;
 }
 
 //  make sure we never jump tooo high 
@@ -190,6 +222,64 @@ view_xview[0]=x-(32);
 //view_yview[0]=y-(view_hview[0]/2);
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// god mode
+if(invincible = 1){
+    if(image_alpha = 255){
+        image_alpha = 0;
+    } else {
+        image_alpha = 255;
+    }
+} else {
+    image_alpha = 255;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_damaging">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// get hurt
+if(invincible = 0){
+    hp -= 1;
+    alarm[1] = 30;
+    invincible = 1;
+}
 </string>
           </argument>
         </arguments>

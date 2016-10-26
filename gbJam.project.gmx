@@ -6,12 +6,18 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_charactor_run</sprite>
     <sprite>sprites\spr_platform</sprite>
     <sprite>sprites\spr_adrenaline</sprite>
     <sprite>sprites\spr_spike</sprite>
     <sprite>sprites\spr_vr_button</sprite>
-    <sprite>sprites\spr_charactor_jump</sprite>
+    <sprites name="spr_player">
+      <sprite>sprites\spr_charactor_run</sprite>
+      <sprite>sprites\spr_health</sprite>
+      <sprite>sprites\spr_charactor_jump</sprite>
+      <sprite>sprites\spr_charactor_attack</sprite>
+    </sprites>
+    <sprite>sprites\spr_enemy_blob</sprite>
+    <sprite>sprites\spr_enemy_blob_death</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_tileset</background>
@@ -30,6 +36,11 @@
     <object>objects\obj_spike</object>
     <object>objects\obj_jump</object>
     <object>objects\obj_run</object>
+    <object>objects\obj_attack</object>
+    <object>objects\obj_health</object>
+    <object>objects\obj_damaging</object>
+    <object>objects\obj_charactor_attack</object>
+    <object>objects\obj_enemy_blob</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_game</room>
