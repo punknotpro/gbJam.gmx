@@ -34,7 +34,8 @@ hsp = 3;
 running = 3;
 dash = 6;
 jumpspeed = 4;
-double_jumpspeed = 3;
+double_jumpspeed = 2.5;
+dbljump = 0;
 max_jump = 6;
 max_fallspeed = 10;
 adrenaline = 100;
@@ -115,15 +116,17 @@ hsp = running;
             <kind>1</kind>
             <string>///input controll
 
-if(keyboard_check_pressed(vk_space) &amp;&amp; adrenaline &gt;= 40){
-    // check for double jump
+//if(keyboard_check_pressed(vk_space) &amp;&amp; adrenaline &gt;= 40){
+if(keyboard_check_pressed(vk_space)){
+        // check for double jump
     if( place_meeting(x, y + 1 , obj_platform)){
         vsp -= jumpspeed;
         sprite_index = spr_charactor_jump;
-        }else{
+        }else if(dbljump = 0){
         vsp -= double_jumpspeed;
+        dbljump = 1;
         }
-        adrenaline -= 40;
+        //adrenaline -= 40;
      if(adrenaline &lt; 0) adrenaline = 0 ;
      } else {
      if(adrenaline &lt; 100) adrenaline += 1;
@@ -177,6 +180,7 @@ if( place_meeting( x, y + vsp , obj_platform)){
         y += sign(vsp);
     }
     vsp = 0;
+    dbljump = 0;
    sprite_index = spr_charactor_run;
     
 }
@@ -303,7 +307,10 @@ if(invincible = 0){
           <argument>
             <kind>1</kind>
             <string>/// dead off screen
-game_restart();
+
+
+    game_restart();
+    
 </string>
           </argument>
         </arguments>
