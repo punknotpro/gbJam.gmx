@@ -18,7 +18,6 @@
     </sprites>
     <sprite>sprites\spr_enemy_blob</sprite>
     <sprite>sprites\spr_enemy_blob_death</sprite>
-    <sprite>sprites\spr_boss_platform</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_tileset</background>
@@ -32,6 +31,8 @@
   <objects name="objects">
     <object>objects\obj_charactor</object>
     <object>objects\obj_platform</object>
+    <object>objects\obj_platform_autogen_init</object>
+    <object>objects\obj_platform_autogen</object>
     <object>objects\obj_lvl_controller</object>
     <object>objects\obj_adrenaline</object>
     <object>objects\obj_spike</object>
@@ -42,11 +43,10 @@
     <object>objects\obj_damaging</object>
     <object>objects\obj_charactor_attack</object>
     <object>objects\obj_enemy_blob</object>
-    <object>objects\obj_boss_platform</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_autogen_game</room>
     <room>rooms\rm_game</room>
-    <room>rooms\rm_boss</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
