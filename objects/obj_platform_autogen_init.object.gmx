@@ -156,6 +156,7 @@ for( ydraw = 0; ydraw &lt; image_yscale; ydraw++){
           <argument>
             <kind>1</kind>
             <string>/// self destruct
+show_debug_message(instance_number(obj_platform_autogen_init));
 if(x + image_xscale * tilesize &lt; view_xview[0]){
     show_debug_message("Destroyed!");
     instance_destroy();

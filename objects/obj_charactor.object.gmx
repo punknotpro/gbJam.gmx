@@ -40,6 +40,7 @@ max_jump = 6;
 max_fallspeed = 10;
 adrenaline = 100;
 hp = 3;
+coins = 0;
 invincible = 0;
 </string>
           </argument>
@@ -278,6 +279,57 @@ if(invincible = 1){
             <kind>1</kind>
             <string>/// restart when you fall to your dooom
 if(y &gt; view_yview[0] + view_hview[0]) game_restart();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_coin">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>other</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>obj_charactor.coins++;
+show_debug_message(obj_charactor.coins);
+instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_heart">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>other</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if( obj_charactor.hp &lt; 3){
+    obj_charactor.hp++;
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>
