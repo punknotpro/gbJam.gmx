@@ -28,13 +28,15 @@
             <string>///initilize things
 
 image_speed = 0.85;
-grav = .25;
+grav = .40
+//grav = .25;
 vsp = 0;
-hsp = 3;
-running = 3;
-dash = 6;
-jumpspeed = 4;
-double_jumpspeed = 2.5;
+
+running = 4;
+dash = 7;
+hsp = running;
+jumpspeed = 5;
+double_jumpspeed = 3.5;
 dbljump = 0;
 max_jump = 6;
 max_fallspeed = 10;
@@ -42,6 +44,7 @@ adrenaline = 100;
 hp = 3;
 coins = 0;
 invincible = 0;
+dashing = 0;
 </string>
           </argument>
         </arguments>
@@ -91,6 +94,12 @@ invincible = 0;
             <string>///dash! over! :(
 
 image_speed = image_speed / 2;
+if(place_meeting(x,y+1, obj_platform)){
+    image_index = spr_charactor_run;
+} else{
+    image_index = spr_charactor_jump;
+}
+dashing = 0;
 hsp = running;
 
 </string>
@@ -123,10 +132,13 @@ if(keyboard_check_pressed(vk_space)){
     if( place_meeting(x, y + 1 , obj_platform)){
         vsp -= jumpspeed;
         sprite_index = spr_charactor_jump;
+        audio_play_sound(sd_jump,0,0);
         }else if(dbljump = 0){
         vsp -= double_jumpspeed;
         dbljump = 1;
+        audio_play_sound(sd_jump,0,0);
         }
+        
         //adrenaline -= 40;
      if(adrenaline &lt; 0) adrenaline = 0 ;
      } else {
@@ -137,6 +149,8 @@ if(keyboard_check_pressed(vk_lalt) &amp;&amp; adrenaline &gt;= 30){
     hsp = dash;
     image_speed = image_speed * 2;
     adrenaline -= 30;
+    sprite_index = spr_charactor_dash;
+    dashing = 1;
     alarm[0] = 20;
 }
 
@@ -144,6 +158,7 @@ if(keyboard_check_pressed(vk_lalt) &amp;&amp; adrenaline &gt;= 30){
 if(keyboard_check_pressed(vk_tab)){
     attack = instance_create(x,y,obj_charactor_attack);
     attack.hspeed = 7;
+    audio_play_sound(sd_shoot,0,0);
 }
 
 //  make sure we never jump tooo high 
@@ -353,7 +368,7 @@ instance_destroy();
           <argument>
             <kind>1</kind>
             <string>/// get hurt
-if(invincible = 0){
+if(invincible = 0 &amp;&amp; !dashing){
     hp -= 1;
     alarm[1] = 30;
     invincible = 1;
